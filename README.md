@@ -1,4 +1,4 @@
-KIT
+# KIT
 
 A small utility thingie, to quickly make something using bgfx from c. It uses HandMadeMath for math operations, qoi.h for image loading (embedded) and m3d.h for basic model loading. \
 This is very much a work in progress, so feel free, to report any issues. \
