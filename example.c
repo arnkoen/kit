@@ -9,7 +9,12 @@ int main() {
 	RGFW_window_setExitKey(win, RGFW_escape);
 
 	bool ok = kit_init(&(kit_desc) {
+#ifdef _WIN32
 		.window = win->src.window,
+#else
+		.window = (void*)RGFW_window_getWindow_X11(win),
+		.display = (void*)RGFW_getDisplay_X11(),
+#endif
 		.width = (uint32_t)win->w,
 		.height = (uint32_t)win->h,
 		.renderer = BGFX_RENDERER_TYPE_VULKAN,

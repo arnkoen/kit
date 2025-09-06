@@ -4,13 +4,12 @@
 # LINUX 
 # -------------------
 
-#!/bin/bash
 set -e  # Exit on error
 
 # Ensure a main file is provided
 if [ -z "$1" ]; then
     echo "Error: No input file provided."
-    echo "Usage: ./build <source_file.c> [debug]"
+    echo "Usage: ./build.bat <source_file.c> [debug]"
     exit 1
 fi
 
@@ -18,19 +17,19 @@ MAIN_FILE="$1"
 LIB_PATH="./libs"
 
 # Choose build type
-if [ "$2" == "debug" ]; then
-    CFLAGS="-g -O0 -DDEBUG /DKIT_LOG_USE_COLOR"
+if [ "$2" = "debug" ]; then
+    CFLAGS="-g -O0 -DDEBUG -DKIT_LOG_USE_COLOR"
     OUTFILE="${MAIN_FILE%.c}_debug"
-    LDFLAGS= "-L$LIB_PATH -lbgfxDebug -lbimgDebug -lbxDebug -lglfw3 -ldl -lm -lpthread -lstdc++ -lX11 -lXcursor -lGL -lXi -lXrandr -lvulkan"
+    LDFLAGS="-L$LIB_PATH -lbgfxDebug -lbimgDebug -lbxDebug -lm -lpthread -lstdc++ -lX11 -lXcursor -lGL -lXi -lXrandr -lvulkan"
 else
     CFLAGS="-O2 -DNDEBUG -s -ffunction-sections -fdata-sections -DKIT_LOG_USE_COLOR"
     OUTFILE="${MAIN_FILE%.c}"
-    LDFLAGS= "-L$LIB_PATH -lbgfxRelease -lbimgRelease -lbxRelease -lglfw3 -ldl -lm -lpthread -lstdc++ -lX11 -lXcursor -lGL -lXi -lXrandr -lvulkan"
+    LDFLAGS="-L$LIB_PATH -lbgfxRelease -lbimgRelease -lbxRelease -lm -lpthread -lstdc++ -lX11 -lXcursor -lGL -lXi -lXrandr -lvulkan"
 fi
 
 echo "Building $OUTFILE with main file $MAIN_FILE..."
 
-gcc $CFLAGS $MAIN_FILE kit/kit.c kit/zpl.c $LDFLAGS -o $OUTFILE
+gcc $CFLAGS "$MAIN_FILE" kit/kit.c $LDFLAGS -o "$OUTFILE"
 
 echo "Done."
 exit 0

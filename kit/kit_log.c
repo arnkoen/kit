@@ -83,7 +83,7 @@ void kit_log_set_lock(kit_log_lock_fn fn, void *udata) {
 }
 
 
-void kit_log_set_level(int level) {
+void kit_log_set_level(kit_log_level level) {
   _kit_logger.level = level;
 }
 
