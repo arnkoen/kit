@@ -1,7 +1,7 @@
 #!/bin/bash 2>/dev/null || goto :windows
 
 # -------------------
-# LINUX / MACOS PART
+# LINUX
 # -------------------
 
 #!/bin/bash
@@ -21,7 +21,7 @@ echo "Done."
 exit 0
 
 # -------------------
-# WINDOWS PART
+# WINDOWS
 # -------------------
 :windows
 @echo off
