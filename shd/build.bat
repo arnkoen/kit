@@ -14,9 +14,8 @@ mkdir -p vk  # Ensure output folder exists
 
 shaderc -f model.vs -o vk/model.vs.bin --varyingdef model_varying.def --type v --platform linux --profile spirv
 shaderc -f model.fs -o vk/model.fs.bin --varyingdef model_varying.def --type f --platform linux --profile spirv
-
-shaderc -f phong.vs -o vk/phong.vs.bin --varyingdef phong_varying.def --type v --platform linux --profile spirv
-shaderc -f phong.fs -o vk/phong.fs.bin --varyingdef phong_varying.def --type f --platform linux --profile spirv
+shaderc -f skinned.vs -o vk/skinned.vs.bin --varyingdef skinned_varying.def --type v --platform linux --profile spirv
+shaderc -f skinned.fs -o vk/skinned.fs.bin --varyingdef skinned_varying.def --type f --platform linux --profile spirv
 
 echo "Done."
 exit 0
@@ -42,8 +41,6 @@ REM Vulkan
 if not exist vk mkdir vk
 shaderc -f model.vs -o vk/model.vs.bin --varyingdef model_varying.def --type v --platform windows --profile spirv
 shaderc -f model.fs -o vk/model.fs.bin --varyingdef model_varying.def --type f --platform windows --profile spirv
-shaderc -f phong.vs -o vk/phong.vs.bin --varyingdef phong_varying.def --type v --platform windows --profile spirv
-shaderc -f phong.fs -o vk/phong.fs.bin --varyingdef phong_varying.def --type f --platform windows --profile spirv
 shaderc -f skinned.vs -o vk/skinned.vs.bin --varyingdef skinned_varying.def --type v --platform windows --profile spirv
 shaderc -f skinned.fs -o vk/skinned.fs.bin --varyingdef skinned_varying.def --type f --platform windows --profile spirv
 
