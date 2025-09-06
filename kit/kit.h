@@ -24,6 +24,7 @@ extern "C" {
 #pragma comment(lib, "d3d12.lib")
 #pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "opengl32.lib")
+#pragma comment(lib, "gdi32.lib")
 #endif
 
 #define KIT_DEF(val, def) (val == 0 ? def : val)
